@@ -158,10 +158,15 @@ export default function App() {
     return (
       <div className="landing-page">
         <div className="landing-shell">
+          <div className="ambient-glow ambient-1"></div>
+          <div className="ambient-glow ambient-2"></div>
+          <div className="ambient-glow ambient-3"></div>
+
           <header className="landing-navbar">
             <div className="landing-nav-left">
               <button className="nav-link">about</button>
               <button className="nav-link">price</button>
+              <button className="nav-link">features</button>
             </div>
 
             <div className="landing-brand">
@@ -169,9 +174,12 @@ export default function App() {
               <span>SHOPCLONE</span>
             </div>
 
-            <button className="download-btn" onClick={() => setPage("login")}>
-              Login
-            </button>
+            <div className="landing-nav-right">
+              <button className="ghost-pill">Preview</button>
+              <button className="download-btn" onClick={() => setPage("login")}>
+                Login
+              </button>
+            </div>
           </header>
 
           <main className="landing-hero">
@@ -181,8 +189,37 @@ export default function App() {
             <div className="hero-shape shape-blob"></div>
             <div className="hero-shape shape-arrow"></div>
             <div className="hero-shape shape-corner"></div>
+            <div className="hero-shape shape-ring"></div>
+            <div className="hero-shape shape-mini-star"></div>
+            <div className="hero-shape shape-pill"></div>
+            <div className="hero-shape shape-soft-cube"></div>
+            <div className="hero-shape shape-orb"></div>
+            <div className="hero-shape shape-wave"></div>
+
+            <div className="floating-info-card info-card-left">
+              <span className="info-dot purple"></span>
+              <div>
+                <strong>Modern UI</strong>
+                <p>Animated landing experience</p>
+              </div>
+            </div>
+
+            <div className="floating-info-card info-card-right">
+              <span className="info-dot orange"></span>
+              <div>
+                <strong>Cart + Login</strong>
+                <p>Interactive shopping demo</p>
+              </div>
+            </div>
+
+            <span className="hero-kicker">E-commerce experience reimagined</span>
 
             <h1>Where ideas take shape</h1>
+
+            <p className="hero-subtitle">
+              A premium storefront concept with floating visuals, smooth login
+              flow, and an interactive cart experience.
+            </p>
 
             <div className="landing-cta-row">
               <button
