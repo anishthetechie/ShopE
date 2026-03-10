@@ -132,16 +132,6 @@ body {
   font-size: 24px;
 }
 
-.ghost-pill {
-  border: 1px solid rgba(76, 63, 115, 0.15);
-  background: rgba(255, 255, 255, 0.55);
-  color: #4c3f73;
-  padding: 10px 16px;
-  border-radius: 999px;
-  font-size: 14px;
-  cursor: pointer;
-  backdrop-filter: blur(10px);
-}
 
 .download-btn {
   justify-self: end;
@@ -396,59 +386,7 @@ body {
   animation: floatSlow 6.3s ease-in-out infinite;
 }
 
-.floating-info-card {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: rgba(255, 255, 255, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.55);
-  border-radius: 18px;
-  padding: 14px 16px;
-  box-shadow: 0 16px 30px rgba(15, 23, 42, 0.08);
-  backdrop-filter: blur(16px);
-  z-index: 3;
-  text-align: left;
-}
 
-.floating-info-card strong {
-  display: block;
-  font-size: 14px;
-  color: #34256b;
-}
-
-.floating-info-card p {
-  margin: 3px 0 0;
-  font-size: 12px;
-  color: #6b5f8f;
-}
-
-.info-card-left {
-  left: 110px;
-  top: 430px;
-  animation: floatSlow 6.6s ease-in-out infinite;
-}
-
-.info-card-right {
-  right: 110px;
-  top: 410px;
-  animation: floatSlow 7s ease-in-out infinite;
-}
-
-.info-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 999px;
-  display: inline-block;
-}
-
-.info-dot.purple {
-  background: linear-gradient(145deg, #a855f7, #7c3aed);
-}
-
-.info-dot.orange {
-  background: linear-gradient(145deg, #fb923c, #f97316);
-}
 
 @keyframes floatSlow {
   0%,
@@ -1261,3 +1199,4 @@ body {
     width: 100%;
   }
 }
+
