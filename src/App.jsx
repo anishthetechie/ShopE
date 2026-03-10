@@ -7,7 +7,7 @@ const products = [
     price: 129.99,
     category: "Electronics",
     image:
-      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1200&q=80",
     description: "Immersive sound, deep bass, and long battery life.",
   },
   {
@@ -16,7 +16,7 @@ const products = [
     price: 89.99,
     category: "Wearables",
     image:
-      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1200&q=80",
     description: "Track workouts, sleep, and notifications with ease.",
   },
   {
@@ -25,7 +25,7 @@ const products = [
     price: 49.99,
     category: "Audio",
     image:
-      "https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=1200&q=80",
     description: "Portable design with clear sound and strong bass.",
   },
   {
@@ -34,7 +34,7 @@ const products = [
     price: 59.99,
     category: "Accessories",
     image:
-      "https://images.unsplash.com/photo-1581605405669-fcdf81165afa?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1581605405669-fcdf81165afa?auto=format&fit=crop&w=1200&q=80",
     description: "Spacious, lightweight, and perfect for daily use.",
   },
 ];
@@ -47,6 +47,7 @@ function formatPrice(price) {
 }
 
 export default function App() {
+  const [page, setPage] = useState("landing");
   const [user, setUser] = useState(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -58,7 +59,9 @@ export default function App() {
     const savedCart = localStorage.getItem("shopclone_cart");
 
     if (savedUser) {
-      setUser(JSON.parse(savedUser));
+      const parsedUser = JSON.parse(savedUser);
+      setUser(parsedUser);
+      setPage("shop");
     }
 
     if (savedCart) {
@@ -83,7 +86,7 @@ export default function App() {
 
     if (!email.trim() || !password.trim()) return;
 
-    const namePart = email.split("@")[0];
+    const namePart = email.split("@")[0] || "shopper";
     const displayName =
       namePart.charAt(0).toUpperCase() + namePart.slice(1).toLowerCase();
 
@@ -94,11 +97,13 @@ export default function App() {
 
     setEmail("");
     setPassword("");
+    setPage("shop");
   }
 
   function logout() {
     setUser(null);
     setCartOpen(false);
+    setPage("landing");
   }
 
   function addToCart(product) {
@@ -107,9 +112,7 @@ export default function App() {
 
       if (exists) {
         return prev.map((item) =>
-          item.id === product.id
-            ? { ...item, qty: item.qty + 1 }
-            : item
+          item.id === product.id ? { ...item, qty: item.qty + 1 } : item
         );
       }
 
@@ -151,75 +154,146 @@ export default function App() {
     [cart]
   );
 
-if (!user) {
-  return (
-    <div className="login-page">
-      <div className="login-scene">
-        <div className="floating-orb orb-1"></div>
-        <div className="floating-orb orb-2"></div>
+  if (page === "landing") {
+    return (
+      <div className="landing-page">
+        <div className="landing-shell">
+          <header className="landing-navbar">
+            <div className="landing-nav-left">
+              <button className="nav-link">about</button>
+              <button className="nav-link">price</button>
+            </div>
 
-        <div className="floating-card package-card">
-          <div className="package-lid"></div>
-          <div className="package-body"></div>
-          <div className="package-label"></div>
-        </div>
+            <div className="landing-brand">
+              <span className="brand-crown">♛</span>
+              <span>SHOPCLONE</span>
+            </div>
 
-        <div className="floating-card payment-card">
-          <div className="payment-chip"></div>
-          <div className="payment-line line-1"></div>
-          <div className="payment-line line-2"></div>
-          <div className="payment-line line-3"></div>
-        </div>
+            <button className="download-btn" onClick={() => setPage("login")}>
+              Login
+            </button>
+          </header>
 
-        <div className="floating-card bag-card">
-          <div className="bag-handle"></div>
-          <div className="bag-body"></div>
+          <main className="landing-hero">
+            <div className="hero-shape shape-cloud"></div>
+            <div className="hero-shape shape-star"></div>
+            <div className="hero-shape shape-dot"></div>
+            <div className="hero-shape shape-blob"></div>
+            <div className="hero-shape shape-arrow"></div>
+            <div className="hero-shape shape-corner"></div>
+
+            <h1>Where ideas take shape</h1>
+
+            <div className="landing-cta-row">
+              <button
+                className="hero-primary-btn"
+                onClick={() => setPage("login")}
+              >
+                Login
+              </button>
+              <button
+                className="hero-secondary-btn"
+                onClick={() => setPage("login")}
+              >
+                Sign up
+              </button>
+            </div>
+          </main>
         </div>
       </div>
+    );
+  }
 
-      <div className="login-card">
-        <div className="login-badge">Welcome to ShopClone</div>
-        <h1>Your one-stop shopping destination</h1>
-        <p className="login-subtext">
-          Sign in to browse all items, add products to your cart, and explore
-          the store experience.
-        </p>
+  if (page === "login") {
+    return (
+      <div className="login-page">
+        <div className="login-layout">
+          <div className="login-card">
+            <div className="login-badge">Welcome to ShopClone</div>
+            <h1>Your one-stop shopping destination</h1>
+            <p className="login-subtext">
+              Sign in to browse all items, add products to your cart, and
+              explore the store experience.
+            </p>
 
-        <form className="login-form" onSubmit={login}>
-          <label>Email address</label>
-          <input
-            type="email"
-            placeholder="Enter your email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+            <form className="login-form" onSubmit={login}>
+              <label>Email address</label>
+              <input
+                type="email"
+                placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
 
-          <label>Password</label>
-          <input
-            type="password"
-            placeholder="Enter your password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+              <label>Password</label>
+              <input
+                type="password"
+                placeholder="Enter your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
 
-          <button type="submit" className="login-btn">
-            Sign In
-          </button>
-        </form>
+              <button type="submit" className="login-btn">
+                Sign In
+              </button>
+            </form>
 
-        <p className="login-note">
-          Demo site: enter any email and password to continue.
-        </p>
+            <div className="login-bottom-row">
+              <button
+                type="button"
+                className="back-home-btn"
+                onClick={() => setPage("landing")}
+              >
+                ← Back to home
+              </button>
+            </div>
+
+            <p className="login-note">
+              Demo site: enter any email and password to continue.
+            </p>
+          </div>
+
+          <div className="login-visual">
+            <div className="visual-glow glow-1"></div>
+            <div className="visual-glow glow-2"></div>
+
+            <div className="floating-box">
+              <div className="box-top"></div>
+              <div className="box-front"></div>
+              <div className="box-label"></div>
+            </div>
+
+            <div className="floating-card3d">
+              <div className="card-chip"></div>
+              <div className="card-line card-line-1"></div>
+              <div className="card-line card-line-2"></div>
+              <div className="card-line card-line-3"></div>
+            </div>
+
+            <div className="floating-bag">
+              <div className="bag-handle"></div>
+              <div className="bag-body"></div>
+            </div>
+
+            <div className="visual-text">
+              <h2>Shop smarter</h2>
+              <p>
+                A modern storefront demo with sleek visuals, cart flow, and a
+                premium e-commerce feel.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  );
-}
+    );
+  }
+
   return (
     <div className="app">
       <header className="header">
         <div>
           <h1 className="brand">ShopClone</h1>
-          <p className="welcome-text">Welcome back, {user.name}</p>
+          <p className="welcome-text">Welcome back, {user?.name}</p>
         </div>
 
         <div className="header-right">
@@ -259,7 +333,9 @@ if (!user) {
         </section>
       </main>
 
-      {cartOpen && <div className="cart-overlay" onClick={() => setCartOpen(false)}></div>}
+      {cartOpen && (
+        <div className="cart-overlay" onClick={() => setCartOpen(false)}></div>
+      )}
 
       <aside className={`cart-panel ${cartOpen ? "open" : ""}`}>
         <div className="cart-header">
@@ -319,4 +395,3 @@ if (!user) {
     </div>
   );
 }
-
