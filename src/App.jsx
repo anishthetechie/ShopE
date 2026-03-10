@@ -162,26 +162,25 @@ export default function App() {
           <div className="ambient-glow ambient-2"></div>
           <div className="ambient-glow ambient-3"></div>
 
-          <header className="landing-navbar">
-            <div className="landing-nav-left">
-              <button className="nav-link">about</button>
-              <button className="nav-link">price</button>
-              <button className="nav-link">features</button>
-            </div>
 
-            <div className="landing-brand">
-              <span className="brand-crown">♛</span>
-              <span>SHOPCLONE</span>
-            </div>
+<header className="landing-navbar">
+  <div className="landing-nav-left">
+    <button className="nav-link">about</button>
+    <button className="nav-link">price</button>
+    <button className="nav-link">features</button>
+  </div>
 
-            <div className="landing-nav-right">
-              <button className="download-btn" onClick={() => setPage("login")}>
-                Login
-              </button>
-            </div>
-          </header>
+  <div className="landing-brand">
+    <span className="brand-crown">♛</span>
+    <span>SHOPCLONE</span>
+  </div>
 
-          <main className="landing-hero">
+  <div className="landing-nav-right">
+    <button className="download-btn" onClick={() => setPage("login")}>
+      Login
+    </button>
+  </div>
+</header>          <main className="landing-hero">
             <div className="hero-shape shape-cloud"></div>
             <div className="hero-shape shape-star"></div>
             <div className="hero-shape shape-dot"></div>
@@ -411,4 +410,5 @@ export default function App() {
     </div>
   );
 }
+
 
