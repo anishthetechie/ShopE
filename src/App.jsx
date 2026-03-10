@@ -151,47 +151,69 @@ export default function App() {
     [cart]
   );
 
-  if (!user) {
-    return (
-      <div className="login-page">
-        <div className="login-card">
-          <div className="login-badge">Welcome to ShopClone</div>
-          <h1>Your one-stop shopping destination</h1>
-          <p className="login-subtext">
-            Sign in to browse all items, add products to your cart, and explore
-            the store experience.
-          </p>
+if (!user) {
+  return (
+    <div className="login-page">
+      <div className="login-scene">
+        <div className="floating-orb orb-1"></div>
+        <div className="floating-orb orb-2"></div>
 
-          <form className="login-form" onSubmit={login}>
-            <label>Email address</label>
-            <input
-              type="email"
-              placeholder="Enter your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
+        <div className="floating-card package-card">
+          <div className="package-lid"></div>
+          <div className="package-body"></div>
+          <div className="package-label"></div>
+        </div>
 
-            <label>Password</label>
-            <input
-              type="password"
-              placeholder="Enter your password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+        <div className="floating-card payment-card">
+          <div className="payment-chip"></div>
+          <div className="payment-line line-1"></div>
+          <div className="payment-line line-2"></div>
+          <div className="payment-line line-3"></div>
+        </div>
 
-            <button type="submit" className="login-btn">
-              Sign In
-            </button>
-          </form>
-
-          <p className="login-note">
-            Demo site: enter any email and password to continue.
-          </p>
+        <div className="floating-card bag-card">
+          <div className="bag-handle"></div>
+          <div className="bag-body"></div>
         </div>
       </div>
-    );
-  }
 
+      <div className="login-card">
+        <div className="login-badge">Welcome to ShopClone</div>
+        <h1>Your one-stop shopping destination</h1>
+        <p className="login-subtext">
+          Sign in to browse all items, add products to your cart, and explore
+          the store experience.
+        </p>
+
+        <form className="login-form" onSubmit={login}>
+          <label>Email address</label>
+          <input
+            type="email"
+            placeholder="Enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+
+          <label>Password</label>
+          <input
+            type="password"
+            placeholder="Enter your password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+
+          <button type="submit" className="login-btn">
+            Sign In
+          </button>
+        </form>
+
+        <p className="login-note">
+          Demo site: enter any email and password to continue.
+        </p>
+      </div>
+    </div>
+  );
+}
   return (
     <div className="app">
       <header className="header">
@@ -297,3 +319,4 @@ export default function App() {
     </div>
   );
 }
+
