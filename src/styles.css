@@ -98,24 +98,12 @@ body {
   padding: 32px 52px 14px;
 }
 
-.landing-nav-left,
-.landing-nav-right {
-  display: flex;
-  gap: 18px;
-  align-items: center;
-}
+.
 
 .landing-nav-right {
   justify-self: end;
 }
 
-.nav-link {
-  background: transparent;
-  border: none;
-  color: #4c3f73;
-  font-size: 14px;
-  cursor: pointer;
-}
 
 .landing-brand {
   display: flex;
@@ -1199,4 +1187,5 @@ body {
     width: 100%;
   }
 }
+
 
